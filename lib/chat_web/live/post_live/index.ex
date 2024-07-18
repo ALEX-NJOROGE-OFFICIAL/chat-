@@ -4,15 +4,18 @@ defmodule ChatWeb.PostLive.Index do
   alias Chat.Content
   alias Chat.Content.Post
   alias Chat.Accounts
+  alias Chat.Content
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, stream(socket, :posts, Content.list_posts())}
+  def mount(_params, session, socket) do
 
-    {:ok,
+    user = Accounts.get_user_by_session_token(session["user_token"])
+    IO.inspect(user)
+  {:ok,
      socket
-     |> stream(:posts, Posts.list_posts())
-     |> assign(:user, user)}
+     |> stream(:posts, Content.list_posts())
+      |> assign(:user, user)
+  }
 
   end
 

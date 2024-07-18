@@ -20,7 +20,7 @@ defmodule ChatWeb.PostLive.FormComponent do
         phx-submit="save"
       >
 
-       <.input field={@form[:user_id]} type="hidden" value={@user.id} />
+       <%!-- <.input field={@form[:user_id]} type="hidden" value={@user.id} /> --%>
 
         <.input field={@form[:title]} type="text" label="Title" />
         <.input field={@form[:body]} type="text" label="Body" />
